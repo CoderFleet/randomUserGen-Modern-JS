@@ -67,11 +67,11 @@ function displayUser(dataObj, imgURL, gender) {
 }
 
 function showSpinner() {
-  document.querySelector(".spinner").style.display = "block";
+  document.querySelector(".spinner").classList.remove("hidden");
 }
 
 function hideSpinner() {
-  document.querySelector(".spinner").style.display = "none";
+  document.querySelector(".spinner").classList.add("hidden");
 }
 
 genBtn.addEventListener("click", fetchUser);
