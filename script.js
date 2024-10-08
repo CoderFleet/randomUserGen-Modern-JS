@@ -2,6 +2,7 @@ const genBtn = document.getElementById("generate");
 const user = document.getElementById("user");
 
 function fetchUser() {
+  showSpinner();
   fetch("https://randomuser.me/api/")
     .then((result) => result.json())
     .then((data) => {
@@ -13,7 +14,7 @@ function fetchUser() {
         Location: dataSource.location.city + ", " + dataSource.location.country,
         Age: dataSource.dob.age,
       };
-
+      hideSpinner();
       displayUser(dataObj, dataSource.picture.large, dataSource.gender);
     });
 }
@@ -63,6 +64,14 @@ function displayUser(dataObj, imgURL, gender) {
   divFJB.classList = "flex justify-between";
 
   user.appendChild(divFJB);
+}
+
+function showSpinner() {
+  document.querySelector(".spinner").style.display = "block";
+}
+
+function hideSpinner() {
+  document.querySelector(".spinner").style.display = "none";
 }
 
 genBtn.addEventListener("click", fetchUser);
